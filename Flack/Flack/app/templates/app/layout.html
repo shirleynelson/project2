@@ -10,11 +10,13 @@
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/style.css' %}" />
      <!--- scripts -->
     <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
-    <script src="{% static 'app/scripts/jquery-3.3.1.slim.min.js' %}"></script>
-    <script src="{% static 'app/scripts/popper.min.js' %}"></script>
+    <!--- # href tag doesn't work in v3.3.1-->
+    <!script src="{% static 'app/scripts/jquery-3.3.1.slim.min.js' %}"><!script> 
+    <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
+    <script src="{% static 'app/scripts/popper.min.js' %}"></!script>
     <script src="{% static 'app/scripts/bootstrap.min.js' %}"></script>
 
-    <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
+   
     <script src="{% static 'app/scripts/bootstrap.js' %}"></script>
     <script src="{% static 'app/scripts/respond.js' %}"></script>
 {% block scripts %}{% endblock %}
@@ -326,6 +328,52 @@ $(document).ready( function() {
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li class="nav-item dropdown" active>
+                        <a class="nav-link dropdown-toggle" 
+                           href="#" 
+                           id="navbarDropdownSolutions" 
+                           role="button" 
+                           data-toggle="dropdown" 
+                           aria-haspopup="true" 
+                           aria-expanded="false">
+                            <font color="red">&hearts;</font>Solutions</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{% url 'contact' %}">
+                                    <font color="green">&hearts;Resume</font></a>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <a class="dropdown-item" href="{% url 'contact' %}">
+                                    <font color="red">&hearts;Private Message</font></a>
+
+                                    <a class="dropdown-item" href="{% url 'contact' %}">
+                                    <font color="blue">&hearts;Project Schedule</font></a>
+
+                                    <a class="dropdown-item" href="{% url 'contact' %}">
+                                    <font color="orange">&hearts;Assign Task</font></a>
+
+                                    <a class="dropdown-item" href="{% url 'contact' %}">
+                                    <font color="blue">&hearts;</font>Schedule Meeting</a>
+                                </div>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" 
+                           href="#" id="navbarDropdown" 
+                           role="button" 
+                           data-toggle="dropdown" 
+                           aria-haspopup="true" aria-expanded="false">
+                            &spades;Messages
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'contact' %}">&spades;Add a Channel</a>
+                            <a class="dropdown-item" href="{% url 'contact' %}">&spades;Write a Message</a>
+                            <a class="dropdown-item" href="{% url 'contact' %}">&spades;Assign a Message</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">
+                            <font color="red">&hearts;</font>Private Message</a>
+                            </div>
+                        </li>
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li><a href="{% url 'contact' %}">Contact</a></li>
                 </ul>
