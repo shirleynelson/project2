@@ -1,4 +1,5 @@
-from __future__ import unicode_literals
+from django.utils.encoding import python_2_unicode_compatible
+
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static

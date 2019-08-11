@@ -1,4 +1,4 @@
-#from django.utils.encoding import python_2_unicode_compatible
+from django.utils.encoding import python_2_unicode_compatible
 import os
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey

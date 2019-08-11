@@ -1,12 +1,13 @@
+from django.utils.encoding import python_2_unicode_compatible
 """
 Definition of urls for Flack.
 """
 
 from datetime import datetime
-from django.urls import path
+from django.urls import path,include
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
-from app import forms, views
+
 from django.conf.urls import url, include
 from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets
@@ -29,7 +30,7 @@ router.register(r'users', UserViewSet)
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('app/',include(app.urls)),
+    path('app/',include('app.urls')),
     path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
     path('login/',
