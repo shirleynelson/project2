@@ -54,7 +54,7 @@ class Domain(models.Model):
     Image = models.ImageField(storage=fsimage)
     UploadPDF=models.FileField(upload_to=fspdf)
     def __str__(self):
-        return f"{self.id} - Domain: {self.domainname} DNS: {self.fullurlname}"
+        return f"{'id':{self.id},'domainname': {self.domainname},'fullurlname': {self.fullurlname},  'upload_file': {self.upload_file}, 'Image': {self.Image}}"
 class DomainChannel(models.Model):
     domainchannelname = models.CharField(max_length=30, default='DEFAULT')
     fullurlname = models.CharField(max_length=65, default='DEFAULT')
@@ -63,7 +63,7 @@ class DomainChannel(models.Model):
     Image = models.ImageField(storage=fsimage)
     UploadPDF=models.FileField(upload_to=fspdf)
     def __str__(self):
-        return f"{self.id} - Channel: {self.domainchannelname} DNS: {self.fullurlname}"
+        return f"{'id': {self.id}, 'domainchannelname': {self.domainchannelname},'fullurlname': {self.fullurlname},'domain': {self.domain},'upload_file': {self.upload_file},'Image': {self.Image}}"
 class DomainChannelSetting(models.Model):
     LAYOUTS=(('DEFAULT','Default'), ('VERTICAL','Vertical'),('HORIZONTAL','Horizontal'))
     THEMES=(
@@ -86,7 +86,7 @@ class DomainChannelSetting(models.Model):
     UploadPDF=models.FileField(upload_to=fspdf)
     domainchannel= models.ForeignKey(DomainChannel, on_delete=models.CASCADE, related_name="domainchannelsettings")
     def __str__(self):
-        return f"{self.id} - Theme:{self.theme} Layout: {self.layout}"
+        return f"{'id':{self.id}, 'theme':{self.theme},'layout': {self.layout},'upload_file': {self.upload_file}, 'Image': {self.Image},'UploadPDF': {self.UploadPDF}, 'domainchannel': {self.domainchannel}}"
 
     class UserSetting(models.Model):
         YES_NO=( ('Y','Yes'),
@@ -127,7 +127,7 @@ class DomainChannelSetting(models.Model):
 #        domains= models.ManyToManyField(Domain, on_delete=models.CASCADE, related_name="manytomanydomainusers")
         domains= models.ManyToManyField(Domain, related_name="manytomanydomainusers")
     def __str__(self):
-        return f"{self.id} - Theme1:{self.theme1} Theme2: {self.theme2} Layout1: {self.layout1} Layout2: {self.layout2}"
+        return f"{'id': {self.id}, 'upload_file':{self.upload_file},  'Image': {self.Image}, 'UploadPDF':{self.UploadPDF}, 'theme1':{self.theme1},'theme2': {self.theme2}, 'layout1': {self.layout1}, 'layout2': {self.layout2}, 'usermonitor': {self.usermonitor}, 'useradmin': {self.useradmin}, 'gameadmin': {self.gameadmin},'domainrestriction': {self.domainrestriction},'messagerestriction': {self.messagerestriction},'agerestriction': {self.agerestriction},'flagged': {self.flagged},'user': {self.user},'domainchannels': {self.domainchannels}}"
   
     class UserMessage(models.Model):
         MESSAGE_CODES=(
