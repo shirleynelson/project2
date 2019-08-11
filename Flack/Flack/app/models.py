@@ -175,6 +175,7 @@ class DomainChannelSetting(models.Model):
                    ('ALLINTHISDOMAINCHANNELMSG','All in this Domain Channel Message'),
                    ('ALLINTHISDOMAINMSG','All in this Domain Message'),
                    ('ALLDOMAINSMSG','All Domains Message'))
+        created = models.DateTimeField(auto_now_add=True)
         upload_file = models.FileField(upload_to=fsfile)
         Image = models.ImageField(storage=fsimage)
         UploadPDF=models.FileField(upload_to=fspdf)
@@ -185,4 +186,4 @@ class DomainChannelSetting(models.Model):
         senttouser= models.ForeignKey(User, on_delete=models.CASCADE, related_name="senttomessages")
         user= models.ForeignKey(User, on_delete=models.CASCADE, related_name="usermessages")
     def __str__(self):
-        return f"Message ID# {self.id} - ({self.code}) {self.note}"
+        return f"{'id': {self.id}, 'created': {created}, 'upload_file': {upload_file}, 'Image': {Image}, 'UploadPDF': {UploadPDF},'code': {self.code},'note': {self.note}}"

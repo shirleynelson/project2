@@ -29,6 +29,7 @@ router.register(r'users', UserViewSet)
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('app/',include(app.urls)),
     path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
     path('login/',
